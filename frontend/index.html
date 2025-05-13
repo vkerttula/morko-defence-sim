@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fi">
+    <head>
+        <meta charset="UTF-8" />
+        <title>[REDACTED] Environment 💀</title>
+        <link rel="icon" href="/fav.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="/style.css" />
+    </head>
+    <body>
+        <h7 class="footer">LOF2025 © yes</h7>
+
+        <div id="title" class="bouncy-title"></div>
+
+        <!-- testaukseen -->
+        <div class="buttons">
+            <button onclick="setDirection('Ylavasen')">Ylävasen</button>
+            <button onclick="setDirection('Ylos')">Ylä</button>
+            <button onclick="setDirection('Ylaoikea')">Yläoikea</button><br />
+            <button onclick="setDirection('Vasen')">Vasen</button>
+            <button onclick="setDirection('Paikallaan')">Paikallaan</button>
+            <button onclick="setDirection('Oikea')">Oikea</button><br />
+            <button onclick="setDirection('Alavasen')">Alavasen</button>
+            <button onclick="setDirection('Alas')">Alas</button>
+            <button onclick="setDirection('Alaoikea')">Alaoikea</button>
+        </div>
+
+        <canvas id="goalCanvas" width="1000" height="800"></canvas>
+
+        <script type="module" src="/src/main.ts"></script>
+        <script type="module" src="/src/widgets/titleWidget.ts"></script>
+    </body>
+</html>

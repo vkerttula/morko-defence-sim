@@ -1,0 +1,47 @@
+canvas {
+    background: #d0f0ff;
+    display: block;
+    margin: 20px auto;
+    border: 2px solid #000;
+}
+
+.buttons {
+    text-align: center;
+    margin-top: 10px;
+}
+
+button {
+    margin: 5px;
+}
+
+.bouncy-title {
+    text-align: center;
+    font-family: monospace;
+    font-size: 2em;
+    margin-top: 20px;
+}
+
+.bouncy-title span {
+    display: inline-block;
+    animation: bounce 0.8s steps(2, end) infinite;
+    text-shadow: 0 0 3px currentColor;
+}
+
+.footer {
+    display: block;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #555;
+}
+
+@keyframes bounce {
+    0%,
+    90%,
+    100% {
+        transform: translateY(0);
+    }
+    10%,
+    50% {
+        transform: translateY(-1px);
+    }
+}
