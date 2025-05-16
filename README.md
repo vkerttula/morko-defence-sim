@@ -4,6 +4,8 @@
 
 Experimental canvas demo: a retro-style goalie (inspired by Finnish folklore character "Mörkö") tries to stop floorball shots in real-time.
 
+> ⚠️ **DISCLAIMER** ⚠️ This project was created purely for fun in just a few hours. The code is not optimized or production-grade, and is not intended to be evaluated for quality or completeness.
+
 ---
 
 ## Real-Time Ball Tracking with Python & OpenCV
