@@ -1,95 +1,91 @@
-# MÖRKÖ v0.0.1-pre-pre-alpha 🧴
+# MÖRKÖ v0.0.1-pre-pre-alpha
 
 ![status](https://img.shields.io/badge/status-unstable--and--proud-red)
 
-Experimental canvas demo: a retro-style goalie (inspired by Finnish folklore character "Mörkö") tries to stop floorball shots.
+Experimental canvas demo: a retro-style goalie (inspired by Finnish folklore character "Mörkö") tries to stop floorball shots in real-time.
 
 ---
 
-## 🧠 Real-Time Ball Tracking with Python & OpenCV
+## Real-Time Ball Tracking with Python & OpenCV
 
-Planned for LOF: a key component of the system is a Python-based real-time vision pipeline using OpenCV to detect and track a red ball from live video input.
+A key component of the system is a Python-based real-time vision pipeline using OpenCV to detect and track a red ball from live video input.
 
-This backend script leverages a high-FPS USB camera (up to 120 FPS), performs color masking and centroid tracking, and estimates motion direction frame-to-frame. Direction data will later be sent to the canvas frontend via WebSocket.
-
-Once implemented (kjeh) and connected to frontend, this will enable fully automatic goalie reactions without manual input.
-
-#### 🔬 Technologies Involved
-
-- TypeScript + Vite + Canvas API
-- Modular architecture
-- Python 3
-- OpenCV (real-time video processing)
-- NumPy (image data manipulation)
-- WebSocket (communication between back and front)
-- AI / Computer Vision
-  - Morphological noise reduction (erode/dilate)
-  - Ball direction inference from frame deltas (Motion vector estimation)
-  - Color mask filtering (HSV-based) & centroid tracking
-  - Region-based direction classification
+The backend processes camera data using HSV masking and centroid tracking, and sends the calculated direction (sector angle) to the frontend over WebSocket. This enables the goalie to react automatically to shots.
 
 ---
 
-## 🚀 Getting Started
+## Technologies Involved
 
-1. Install dependencies:
+* TypeScript + Vite + Canvas API (frontend)
+* Python 3 + OpenCV + NumPy (backend)
+* WebSocket (real-time communication)
+* Modular architecture
+* AI / Computer Vision techniques:
 
-   ```bash
-   cd frontend
-   npm install
-   ```
+  * HSV color filtering & centroid detection
+  * Morphological filtering (erode/dilate)
+  * Direction estimation from frame deltas
+  * Region-based classification
 
-2. Start development server:
+---
 
-   ```bash
-   npm run dev
-   ```
+## Getting Started
 
-3. Open in your browser:
+For setup and run instructions, refer to the specific README files:
 
-   ```
-   http://localhost:5173
-   ```
+* [Frontend README](./frontend/README.md)
+* [Backend README](./backend/README.md)
 
 ---
 
 ## 📁 Project Structure
 
 ```
-morko-defense-sim/
-├── backend/
-│   └── app.py                  # Python (OpenCV) ball tracking prototype
-├── frontend/
-│   ├── public/
-│   │   └── fav.ico
-│   ├── src/
-│   │   ├── core/               # Core goalie logic and rendering
+MORKO-DEFENCE-SIM-MAIN/
+│
+├── backend/                     # Python-based backend logic and server
+│   ├── core/                    # Core processing logic, such as video analysis
+│   │   └── video_processor.py
+│   ├── dev/                     # Developer tools and calibration scripts
+│   │   └── hsv-calibration.py
+│   ├── app.py
+│   ├── README.md
+│   └── requirements.txt
+│
+├── frontend/                    # Frontend application built with TypeScript and Vite
+│   ├── node_modules/            # Installed NPM packages (auto-generated)
+│   ├── public/                  # Static assets served as-is (images, icons, etc.)
+│   ├── src/                     # Main source code of the frontend
+│   │   ├── core/                # Core logic and control systems
 │   │   │   └── goalie.ts
-│   │   ├── dev/                # Manual input helpers for testing
-│   │   │   └── manualInputs.ts
-│   │   ├── enums/              # Enums and constant mappings
+│   │   ├── dev/                 # Manual input handling and development utilities
+│   │   │   ├── manuallInputs.ts
+│   │   │   └── sectors.ts
+│   │   ├── enums/               # Enum definitions for directions and other constants
 │   │   │   └── directions.ts
-│   │   ├── types/              # Shared TypeScript types
+│   │   ├── types/               # TypeScript type definitions and data structures
 │   │   │   └── types.ts
-│   │   ├── widgets/            # UI widgets and animated elements
+│   │   ├── widgets/             # UI components and interface elements
 │   │   │   ├── renderTile.ts
 │   │   │   └── titleWidget.ts
-│   │   ├── main.ts             # App entry point
-│   │   └── vite-env.d.ts       # Vite typings
+│   │   ├── main.ts
+│   │   └── vite-env.d.ts
 │   ├── index.html
 │   ├── style.css
 │   ├── package.json
 │   ├── package-lock.json
 │   ├── tsconfig.json
-│   └── .prettierrc             # Code formatting config
-└── README.md
+│   ├── .prettierrc
+│   └── README.md
+└── README.md                    # You are reading this file
+
 ```
 
 ---
 
-## 📡 Backend?
+##  Status
 
-Python backend planned for ball detection using a USB camera and OpenCV.
-Data will be sent to the frontend over WebSocket.
-
-Currently, the frontend is fully standalone and controllable with buttons.
+- Full communication between backend and frontend is functional
+- Goalie successfully reacts to detected shots in real time, not good, not bad
+- WebSocket integration live and operational
+- Further optimization and robustness improvements ongoing
